@@ -1,0 +1,58 @@
+ Num,Check Item,Audit Value,Configuration Value,Result
+ 2.1.6,Ensure separate partition exists for /var,mount | grep /var,Found /var separate partition,Compliance,High
+ 2.1.11,Ensure separate partition exists for /var/log,mount | grep /var/log,Found /var/log separate partition,Compliance,High
+ 2.1.12,Ensure separate partition exists for /var/log/audit,mount | grep /var/log/audit,Found /var/log/audit separate partition,Compliance,High
+ 2.1.13,Ensure separate partition exists for /home,mount | grep /home,Found /home separate partition,Compliance,High
+ 2.1.22,Disable Automounting,autofs 0:off 1:off 2:off 3:off 4:off 5:off 6:off,error reading information on service autofs: No such file or directory,Compliance,High
+ 2.2.5,Disable the rhnsd Daemon,rhnsd 0:off 1:off 2:off 3:off 4:off 5:off 6:off,rhnsd           0:off   1:off   2:off   3:off   4:off   5:off   6:off,Compliance,High
+ 2.3.1,Ensure AIDE is installed,rpm -q aide||aide-version,aide-0.14-3.el6_2.2.x86_64,Compliance,High
+ 2.4.1,Ensure permissions on bootloader config are configured,Access:(0600/-rw-------)Uid:( 0/ root)Gid:( 0/ root),-rw-------. 1 root root 2122 Nov 18 08:19 /boot/grub/grub.conf,Compliance,High
+ 2.4.3,Ensure authentication required for single user mode,/etc/sysconfig/init|set SINGLE to /sbin/sulogin,SINGLE=/sbin/sulogin,Compliance,High
+ 2.5.3,Ensure address space layout randomization (ASLR) is enabled,kernel.randomize_va_space = 2,kernel.randomize_va_space = 2,Compliance,High
+ 2.6.1,Ensure SELinux is not disabled in bootloader configuration,no kernel line has the selinux=0 or enforcing=0 parameters set, kernel /vmlinuz-2.6.32-696.13.2.el6.x86_64 ro root=/dev/mapper/vg00-rootvol rd_NO_LUKS LANG=en_US.UTF-8 rd_LVM_LV=vg00/rootvol rd_NO_MD SYSFONT=latarcyrheb-sun16 rd_LVM_LV=vg00/swapvol KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM elevator=deadline audit=1 crashkernel=auto kernel /vmlinuz-2.6.32-696.6.3.el6.x86_64 ro root=/dev/mapper/vg00-rootvol rd_NO_LUKS LANG=en_US.UTF-8 rd_LVM_LV=vg00/rootvol rd_NO_MD SYSFONT=latarcyrheb-sun16 rd_LVM_LV=vg00/swapvol KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM elevator=deadline audit=1 crashkernel=auto kernel /vmlinuz-2.6.32-696.3.2.el6.x86_64 ro root=/dev/mapper/vg00-rootvol rd_NO_LUKS LANG=en_US.UTF-8 rd_LVM_LV=vg00/rootvol rd_NO_MD SYSFONT=latarcyrheb-sun16 rd_LVM_LV=vg00/swapvol KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM elevator=deadline audit=1 crashkernel=auto kernel /altvmlinuz-2.6.32-431.17.1.el6.x86_64 ro root=/dev/mapper/vg00alt-rootvol rd_NO_LUKS LANG=en_US.UTF-8 rd_LVM_LV=vg00alt/rootvol rd_NO_MD SYSFONT=latarcyrheb-sun16 rd_LVM_LV=vg00/swapvol KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM elevator=deadline audit=1 crashkernel=auto,Compliance,High
+ 2.6.1,Ensure SELinux policy is configured,Policy from config file: targeted,Policy from config file: targeted,Compliance,High
+ 2.6.1,Ensure SETroubleshoot is not installed,'rpm -q setroubleshoot'-->package setroubleshoot is not installed,setroubleshoot is not installed,Compliance,High
+ 2.6.1,Ensure the MCS Translation Service (mcstrans) is not installed,rpm -q mcstrans'-->package mcstrans is not installed,mcstrans is not installed,Compliance,High
+2.6.2,Ensure SELinux is installed,rpm -q libselinux --> libselinux-version,libselinux-2.0.94-7.el6.x86_64 libselinux-2.0.94-7.el6.i686,Compliance,High
+2.7.1,Ensure message of the day is configured properly,Run 'egrep '(\v|\r|\m|\s)' /etc/motd' and no results are returned,No results returned,Compliance,High
+2.7.1,Ensure local login warning banner is configured properly,Run 'egrep '(\v|\r|\m|\s)' /etc/issue' and no results are returned,No results returned,Compliance,High
+2.7.1,Ensure remote login warning banner is configured properly,Run 'egrep '(\v|\r|\m|\s)' /etc/issue.net' and no results are returned,No results returned,Compliance,High
+2.7.1,Ensure permissions on /etc/motd are configured,stat /etc/motd --> Access:(0644/-rw-r--r--) Uid:( 0/ root) Gid:( 0/ root),-rw-r--r--. 1 root root 865 Dec 2 2014 /etc/motd,Compliance,High
+2.7.1,Ensure permissions on /etc/issue are configured,stat /etc/issue --> Access:(0644/-rw-r--r--) Uid:( 0/ root) Gid:( 0/ root),-rw-r--r--. 1 root root 865 Dec 2 2014 /etc/issue,Compliance,High
+2.7.1,Ensure permissions on /etc/issue.net are configured,stat /etc/issue.net --> Access:(0644/-rw-r--r--) Uid:( 0/ root) Gid:( 0/ root),-rw-r--r--. 1 root root 865 Dec 2 2014 /etc/issue.net,Compliance,High
+3.1,Ensure chargen services are not enabled,xinetd based services:chargen-dgram: off chargen-stream: off or missed,chargen-dgram off chargen-stream off,Compliance,High
+3.1,Ensure daytime services are not enabled,xinetd based services:daytime-dgram: off daytime-stream: off or missed,daytime-dgram off daytime-stream off,Compliance,High
+3.1,Ensure discard services are not enabled,xinetd based services:discard-dgram: off discard-stream: off or missed,discard-dgram off discard-stream off,Compliance,High
+3.1,Ensure 'echo' services are not enabled,xinetd based services:'echo-dgram': off 'echo-stream': off or missed,echo-dgram off echo-stream off,Compliance,High
+3.1,Ensure time services are not enabled,xinetd based services:'time-dgram': off 'time-stream': off or missed,time-dgram off time-stream off,Compliance,High
+3.1,Ensure rsh server are not enabled,xinetd based services:'rexec': off 'rlogin': off or missed,error reading information on service rexec: No such file or directory error reading information on service rlogin: No such file or directory,Compliance,High
+3.1,Ensure talk server are not enabled,xinetd based services:'talk': off or missed,error reading information on service talk: No such file or directory,Compliance,High
+3.1,Ensure telnet server are not enabled,xinetd based services:'telnet': off or missed,error reading information on service telnet: No such file or directory,Compliance,High
+3.1,Ensure tftp server are not enabled,xinetd based services:'tftp': off or missed,error reading information on service tftp: No such file or directory,Compliance,High
+3.1,Ensure rsync serice are not enabled,xinetd based services:'rsync': off or missed,rsync off,Compliance,High
+3.2.2,Ensure X Window System is not installed,rpm -qa xorg-x11* --> No output is returned,package xorg-x11* is not installed,Compliance,High
+3.2.3,Ensure Avahi is not enabled,verify all runlevels are listed as off or avahi-daemon is not available,error reading information on service avahi-daemon: No such file or directory,Compliance,High
+3.2.4,Ensure CUPS is not enabled,verify all runlevels are listed as off or cups is not available,cups 0:off 1:off 2:off 3:off 4:off 5:off 6:off,Compliance,High
+3.2.5,Ensure DHCP is not enabled,verify all runlevels are listed as off or dhcpd is not available,error reading information on service dhcpd: No such file or directory,Compliance,High
+3.2.6,Ensure LDAP is not enabled,verify all runlevels are listed as off or slapd is not available,error reading information on service slapd: No such file or directory,Compliance,High
+3.2.7,Ensure DNS Server is not enabled,verify all runlevels are listed as off or named is not available,error reading information on service named: No such file or directory,Compliance,High
+3.2.8,Ensure FTP Server is not enabled,verify all runlevels are listed as off or vsftpd is not available,error reading information on service vsftpd: No such file or directory,Compliance,High
+3.2.9,Ensure HTTP Server is not enabled,verify all runlevels are listed as off or httpd is not available,error reading information on service httpd: No such file or directory,Compliance,High
+3.2.10,Ensure IMAP and POP3 Server is not enabled,verify all runlevels are listed as off or dovecot is not available,error reading information on service dovecot: No such file or directory,Compliance,High
+3.2.12,Ensure HTTP Proxy Server is not enabled,verify all runlevels are listed as off or squid is not available,error reading information on service squid: No such file or directory,Compliance,High
+3.2.15,Ensure NIS Server is not enabled,verify all runlevels are listed as off or ypserv is not available,error reading information on service ypserv: No such file or directory,Compliance,High
+3.3.1,Ensure NIS Client is not installed,RUN rpm -q ypbind --> verify ypbind is not installed,package ypbind is not installed,Compliance,High
+3.3.2,Ensure RSH Client is not installed,RUN rpm -q rsh --> verify rsh is not installed,package rsh is not installed,Compliance,High
+3.3.3,Ensure Talk Client is not installed,RUN rpm -q talk --> verify talk is not installed,package talk is not installed,Compliance,High
+3.3.5,Ensure LDAP Client is not installed,RUN rpm -q openldap-clients --> verify openldap-clients is not installed,package openldap-clients is not installed,Compliance,High
+4.1.1,Ensure IP forwarding is disabled,Run sysctl net.ipv4.ip_forward --> Verify value is '0',net.ipv4.ip_forward = 0,Compliance,High
+4.2.1,Ensure source routed packets are not accepted,Run sysctl net.ipv4.conf.all.accept_source_route|net.ipv4.conf.default.accept_source_route --> Verify value is '0',net.ipv4.conf.all.accept_source_route = 0 net.ipv4.conf.default.accept_source_route = 0,Compliance,High
+4.2.5,Ensure broadcast ICMP requests are ignored,Run sysctl net.ipv4.icmp_echo_ignore_broadcasts --> Verify value is '1',net.ipv4.icmp_echo_ignore_broadcasts = 1,Compliance,High
+4.2.6,Ensure bogus ICMP responses are ignored,Run sysctl net.ipv4.icmp_ignore_bogus_error_responses --> Verify value is '1',net.ipv4.icmp_ignore_bogus_error_responses = 1,Compliance,High
+4.2.8,Ensure TCP SYN Cookies is enabled,Run sysctl net.ipv4.tcp_syncookies --> Verify value is '1',net.ipv4.tcp_syncookies = 1,Compliance,High
+4.4.1,Ensure TCP Wrappers is installed,RUN rpm -q tcp_wrappers --> verify tcp_wrappers is installed,tcp_wrappers-7.6-57.el6.x86_64,Compliance,High
+4.5.1,Ensure DCCP is disabled,Run lsmod|grep dccp --> No output,dccp is not enable,Compliance,High
+4.5.2,Ensure SCTP is disabled,Run lsmod|grep sctp --> No output,sctp is not enable,Compliance,High
+4.5.3,Ensure RDS is disabled,Run lsmod|grep rds --> No output,rds is not enable,Compliance,High
+4.5.4,Ensure TIPC is disabled,Run lsmod|grep tipc --> No output,tipc is not enable,Compliance,High
+4.6.1,Ensure iptables is installed,Run rpm -q iptables --> verify iptables is installed,iptables-1.4.7-11.el6.x86_64,Compliance,High
