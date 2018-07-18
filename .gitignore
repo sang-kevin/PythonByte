@@ -2,7 +2,10 @@
 .idea/
 *.xls
 *.xlsx
-*.csv
+*.jpg
+*.tar.gz
+files/
+imgs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
