@@ -3,7 +3,7 @@
 # 可以使用标准库中Threading.Event
 # 等待事件一端调用wait, 等待事件
 # 通知事件一端调用 set, 通知事件
-# TarThread线程如何退出？  把TarThread设置为守护线程，即其它线程退出后，它会自动退出
+# TarThread线程如何退出？  把TarThread设置为守护线程，即其它线程退出后，python程序（进程）就结束了，不需要等待守护线程的结束。
 # 设置方法：在构造器中：self.setDaemon(True)
 
 import tushare as ts
